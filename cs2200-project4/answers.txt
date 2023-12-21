@@ -1,0 +1,68 @@
+CS 2200 Spring 2021
+Project 4
+
+Name:Que LE
+GT Username:qphuong3
+
+Problem 1C (FCFS Scheduler)
+----------
+
+/* Fix me */
+1 CPU
+Total Context Switches: 94
+Total execution time: 67.9 s
+Total time spent in READY state: 372.1 s
+
+2 CPU
+Total Context Switches: 123
+Total execution time: 40.3 s
+Total time spent in READY state: 56.2 s
+
+4 CPU
+Total Context Switches: 176
+Total execution time: 37.0 s
+Total time spent in READY state: 0.4 s
+
+There isn't a linear relationship between the number of processors and total 
+execution time (more exponential). There is a significant improvement between 1 and 2,
+howver there isn't as large of an improvement between 2 and 4. This is because while more 
+processes can be executed simultaneously, sometimes the extra CPUs are idle. This can be because
+some parts must be done serially.
+
+Problem 2B (Round-Robin)
+----------
+800ms
+Total Context Switches: 131
+Total execution time: 67.9 s
+Total time spent in READY state: 317.1 s
+
+600ms
+Total Context Switches: 156
+Total execution time: 67.9 s
+Total time spent in READY state: 302.3 s
+
+400ms
+Total Context Switches: 202
+Total execution time: 67.9 s
+Total time spent in READY state: 291.7 s
+
+200ms
+Total Context Switches: 363
+Total execution time: 67.9 s
+Total time spent in READY state: 284.4 s
+
+As the timeslice increase, the waiting time increase slightly. We do not want to use the shortest timeslice 
+because there will be a lot of context switches, which means the OS isn't doing meaningful work.
+
+Problem 3B (Preemptive Priority)
+----------
+A way to reduce starvation is to have a timestamp in when the value enters the queue to calculate how long 
+it has been in the queue. Once a certain amount of time, which we have predetermined, has passed, it will 
+be automatically popped from the queue.
+
+Problem 4 (The Priority Inversion Problem)
+---------
+Once way we can solve this is that when a higher-priority task requests ownership of the shared resource, the lower-
+priority task has its priority immediately incremented to be higher than the higher-priority task that requests ownership.
+This helps restore order of priority so the algorithm can maintain its priority.
+
